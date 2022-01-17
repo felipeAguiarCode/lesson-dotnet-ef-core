@@ -1,15 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using src.Entities;
+using Src.Domain.Entities;
 
-namespace src.Database
+namespace Src.Database
 {
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options)
-            :base(options)
-        {
-            
-        }
+            : base(options)
+        { }
 
         public DbSet<Hero> Heros { get; set; }
         public DbSet<Group> Groups { get; set; }

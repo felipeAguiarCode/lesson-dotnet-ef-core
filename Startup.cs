@@ -1,18 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using src.Database;
+using Src.Database;
 
 namespace entity_framework_core
 {
@@ -30,13 +23,20 @@ namespace entity_framework_core
         {
             var dataService = Configuration.GetSection("ConnectionStrings:DefaultConnection");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(dataService.Value));
-            
+
             services.AddScoped<DataContext, DataContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "entity_framework_core", Version = "v1" });
+                c.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Title = "entity_framework_core",
+                        Version = "v1"
+                    }
+                );
             });
         }
 
@@ -47,7 +47,8 @@ namespace entity_framework_core
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "entity_framework_core v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                                                        "entity_framework_core v1"));
             }
 
             app.UseHttpsRedirection();

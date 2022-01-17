@@ -1,4 +1,4 @@
-namespace src.DTO
+namespace Src.Domain.DTO
 {
     public class UpdateHero
     {

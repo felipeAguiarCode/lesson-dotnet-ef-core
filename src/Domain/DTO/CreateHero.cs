@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace src.DTO
+namespace Src.Domain.DTO
 {
     public class CreateHero
     {

@@ -1,4 +1,4 @@
-namespace src.Entities
+namespace Src.Domain.Entities
 {
     public class Group
     {

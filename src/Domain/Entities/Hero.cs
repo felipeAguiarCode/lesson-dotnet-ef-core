@@ -1,13 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using src.DTO;
+using Src.Domain.DTO;
 
-namespace src.Entities
+namespace Src.Domain.Entities
 {
     public class Hero
     {
-        public Hero(){}
+        public Hero() { }
         public Hero(CreateHero hero)
         {
             this.Name = hero.Name;
